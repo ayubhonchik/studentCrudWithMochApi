@@ -6,7 +6,7 @@ const Home = () => {
   const [editingItem, setEditingItem] = useState<any>("");
   return (
     <>
-      <CreateForm editingItem={editingItem}/>
+      <CreateForm editingItem={editingItem} setEditingItem={setEditingItem}/>
       <Blog setEditingItem={setEditingItem}/>
     </>
   );

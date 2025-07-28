@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useBlog } from "../api/hooks/useBlog";
 
-const CreateForm = ({editingItem}:{editingItem:any}) => {
+const CreateForm = ({editingItem , setEditingItem}:{editingItem:any , setEditingItem:any}) => {
 
   const [title, setTitle] = useState("");
   const [body, setbody] = useState("");
@@ -27,6 +27,7 @@ const CreateForm = ({editingItem}:{editingItem:any}) => {
       setbody("");  
       setaddress("");
       setphone_number("");
+      setEditingItem(null)
     } else {
       createBlog.mutate(blog);
       setTitle("");
@@ -42,33 +43,33 @@ const CreateForm = ({editingItem}:{editingItem:any}) => {
         <input
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="border px-3 py-1 rounded-lg border-gray-300"
+          className="w-50 px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white"
           placeholder="F name"
           type="text"
         />
         <input
           value={body}
           onChange={(e) => setbody(e.target.value)}
-          className="border px-3 py-1 rounded-lg border-gray-300"
+          className="w-50 px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white"
           placeholder="L name"
           type="text"
         />
           <input
           value={address}
           onChange={(e) => setaddress(e.target.value)}
-          className="border px-3 py-1 rounded-lg border-gray-300"
+          className="w-50 px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white"
           placeholder="address"
           type="text"
         />
           <input
           value={phone_number}
           onChange={(e) => setphone_number(e.target.value)}
-          className="border px-3 py-1 rounded-lg border-gray-300"
+          className="w-50 px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white"
           placeholder="phone_number"
           type="number"
         />
         <button className="border px-3 py-1 rounded-lg border-gray-300">
-          Submit
+          {editingItem ? "Update" : "Create"}
         </button>
       </form>
     </div>
